@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://7w41jsj4tdv3"]
+
+[ext_resource type="SpriteFrames" uid="uid://bouy214wwtuk8" path="res://resources/wires/red.tres" id="2_5mfbr"]
+[ext_resource type="Script" uid="uid://dumivvlrr2ece" path="res://scripts/wire.gd" id="2_a3040"]
+[ext_resource type="AudioStream" uid="uid://dxoaqr7yrh7xu" path="res://assets/sfx/cut.wav" id="3_a3040"]
+
+[node name="Wire" type="TextureButton" unique_id=420707629]
+custom_minimum_size = Vector2(6, 16)
+custom_maximum_size = Vector2(6, 16)
+offset_right = 4.0
+offset_bottom = 16.0
+script = ExtResource("2_a3040")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=512115482]
+unique_name_in_owner = true
+position = Vector2(3, 8)
+sprite_frames = ExtResource("2_5mfbr")
+autoplay = "default"
+
+[node name="CutSound" type="AudioStreamPlayer" parent="." unique_id=1719236039]
+unique_name_in_owner = true
+stream = ExtResource("3_a3040")
+bus = &"SFX"
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

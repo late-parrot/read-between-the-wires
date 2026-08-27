@@ -1,0 +1,201 @@
+[gd_scene format=3 uid="uid://fpbmyogum632"]
+
+[ext_resource type="Texture2D" uid="uid://boclah5n8w7e1" path="res://assets/textures/table-full.png" id="1_4ignj"]
+[ext_resource type="Theme" uid="uid://cmjcddbtcw103" path="res://resources/theme.tres" id="1_p6dhs"]
+[ext_resource type="Texture2D" uid="uid://cnmqub8tkwoy1" path="res://assets/textures/background.png" id="1_wosw1"]
+[ext_resource type="Script" uid="uid://da4s3wu5sgyp5" path="res://scripts/title.gd" id="2_pyl7j"]
+[ext_resource type="Texture2D" uid="uid://ihm0y3awrfdf" path="res://assets/textures/title.png" id="5_b3w7a"]
+[ext_resource type="PackedScene" uid="uid://d0bpht60otde2" path="res://scenes/settings.tscn" id="6_4rr2b"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_pyl7j"]
+font_size = 15
+outline_color = Color(0.12941177, 0.12941177, 0.13725491, 1)
+stacked_shadow_count = 8
+stacked_shadow_0/offset = Vector2(-2, -2)
+stacked_shadow_0/color = Color(0.12941177, 0.12941177, 0.13725491, 1)
+stacked_shadow_1/offset = Vector2(0, -2)
+stacked_shadow_1/color = Color(0.12941177, 0.12941177, 0.13725491, 1)
+stacked_shadow_2/offset = Vector2(2, -2)
+stacked_shadow_2/color = Color(0.12941177, 0.12941177, 0.13725491, 1)
+stacked_shadow_3/offset = Vector2(-2, 0)
+stacked_shadow_3/color = Color(0.12941177, 0.12941177, 0.13725491, 1)
+stacked_shadow_4/offset = Vector2(2, 0)
+stacked_shadow_4/color = Color(0.12941177, 0.12941177, 0.13725491, 1)
+stacked_shadow_5/offset = Vector2(-2, 2)
+stacked_shadow_5/color = Color(0.12941177, 0.12941177, 0.13725491, 1)
+stacked_shadow_6/offset = Vector2(0, 2)
+stacked_shadow_6/color = Color(0.12941177, 0.12941177, 0.13725491, 1)
+stacked_shadow_7/offset = Vector2(2, 2)
+stacked_shadow_7/color = Color(0.12941177, 0.12941177, 0.13725491, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p6dhs"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.27058825, 0.26666668, 0.30980393, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pyl7j"]
+bg_color = Color(0.39215687, 0.3882353, 0.39607844, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b3w7a"]
+bg_color = Color(0.7058824, 0.32156864, 0.32156864, 1)
+
+[sub_resource type="Animation" id="Animation_pyl7j"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_b3w7a"]
+resource_name = "fade_out"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4rr2b"]
+_data = {
+&"RESET": SubResource("Animation_pyl7j"),
+&"fade_out": SubResource("Animation_b3w7a")
+}
+
+[node name="Title" type="Control" unique_id=1295946351]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_p6dhs")
+script = ExtResource("2_pyl7j")
+
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=1495972862]
+unique_name_in_owner = true
+repeat_size = Vector2(160, 96)
+autoscroll = Vector2(2, 2)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D" unique_id=1916345011]
+texture = ExtResource("1_wosw1")
+
+[node name="TableFull" type="Sprite2D" parent="." unique_id=1980930303]
+visible = false
+texture = ExtResource("1_4ignj")
+centered = false
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=2027792393]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1005687450]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=2007215448]
+visible = false
+layout_mode = 2
+text = "Read Between
+the Wires"
+label_settings = SubResource("LabelSettings_pyl7j")
+horizontal_alignment = 1
+uppercase = true
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer" unique_id=1998211621]
+layout_mode = 2
+texture = ExtResource("5_b3w7a")
+expand_mode = 5
+stretch_mode = 4
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer" unique_id=897876537]
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/PanelContainer" unique_id=1716306373]
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer" unique_id=42992311]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/separation = 2
+
+[node name="Play" type="Button" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=442412876]
+layout_mode = 2
+theme_override_font_sizes/font_size = 6
+theme_override_styles/normal = SubResource("StyleBoxFlat_p6dhs")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pyl7j")
+theme_override_styles/hover = SubResource("StyleBoxFlat_b3w7a")
+text = "PLAY"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1459844221]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="Settings" type="Button" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=818218107]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 6
+theme_override_styles/normal = SubResource("StyleBoxFlat_p6dhs")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pyl7j")
+theme_override_styles/hover = SubResource("StyleBoxFlat_b3w7a")
+text = "SETTINGS"
+
+[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=249055765]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 6
+theme_override_styles/normal = SubResource("StyleBoxFlat_p6dhs")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pyl7j")
+theme_override_styles/hover = SubResource("StyleBoxFlat_b3w7a")
+text = "QUIT"
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1176223539]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+
+[node name="FadeOut" type="AnimationPlayer" parent="ColorRect" unique_id=1532710216]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_4rr2b")
+
+[node name="Settings" parent="." unique_id=1824899894 instance=ExtResource("6_4rr2b")]
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Settings" to="Settings" method="toggle"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Quit" to="." method="_on_quit_pressed"]

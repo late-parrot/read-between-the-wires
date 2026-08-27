@@ -1,0 +1,66 @@
+[gd_resource type="Theme" format=3 uid="uid://cmjcddbtcw103"]
+
+[ext_resource type="Texture2D" uid="uid://f51n6oig3shp" path="res://assets/textures/grabber.png" id="1_7ct1h"]
+[ext_resource type="FontFile" uid="uid://c6lha7j504epa" path="res://assets/my 3x5 tiny mono pixel font.ttf" id="1_d4nwg"]
+[ext_resource type="Texture2D" uid="uid://ci8vk5q51s3xb" path="res://assets/textures/toggle-on.png" id="1_owntx"]
+[ext_resource type="Texture2D" uid="uid://cfowm1jhpsqj2" path="res://assets/textures/grabber-highlight.png" id="2_886mr"]
+[ext_resource type="Texture2D" uid="uid://bp41g0uqx5itc" path="res://assets/textures/toggle-off.png" id="2_aaf3v"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tekt2"]
+bg_color = Color(0.7058824, 0.32156864, 0.32156864, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o6xl0"]
+content_margin_left = 2.0
+content_margin_top = 1.0
+content_margin_right = 2.0
+content_margin_bottom = 1.0
+bg_color = Color(0.27058825, 0.26666668, 0.30980393, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d4nwg"]
+bg_color = Color(0.39215687, 0.3882353, 0.39607844, 1)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_d4nwg"]
+color = Color(1, 1, 1, 1)
+grow_begin = 0.0
+grow_end = 0.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5p8wc"]
+bg_color = Color(0.5254902, 0.5058824, 0.53333336, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7ct1h"]
+draw_center = false
+border_width_top = 1
+border_width_bottom = 1
+border_color = Color(0.27058825, 0.26666668, 0.30980393, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tipki"]
+bg_color = Color(0.12941177, 0.12941177, 0.13725491, 1)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_3d26k"]
+color = Color(0.72156864, 0.70980394, 0.7254902, 1)
+grow_begin = 0.0
+vertical = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mwn6m"]
+draw_center = false
+border_width_left = 1
+border_color = Color(0.39215687, 0.3882353, 0.39607844, 1)
+
+[resource]
+default_font = ExtResource("1_d4nwg")
+Button/styles/hover = SubResource("StyleBoxFlat_tekt2")
+Button/styles/normal = SubResource("StyleBoxFlat_o6xl0")
+Button/styles/pressed = SubResource("StyleBoxFlat_d4nwg")
+CheckButton/icons/checked = ExtResource("1_owntx")
+CheckButton/icons/unchecked = ExtResource("2_aaf3v")
+HSeparator/styles/separator = SubResource("StyleBoxLine_d4nwg")
+HSlider/icons/grabber = ExtResource("1_7ct1h")
+HSlider/icons/grabber_highlight = ExtResource("2_886mr")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_5p8wc")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_5p8wc")
+HSlider/styles/slider = SubResource("StyleBoxFlat_7ct1h")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_tipki")
+VScrollBar/styles/grabber = SubResource("StyleBoxLine_3d26k")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxLine_3d26k")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxLine_3d26k")
+VScrollBar/styles/scroll = SubResource("StyleBoxFlat_mwn6m")

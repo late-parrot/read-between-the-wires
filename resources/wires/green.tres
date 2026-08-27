@@ -1,0 +1,37 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://breyycbteplb"]
+
+[ext_resource type="Texture2D" uid="uid://c7xvjjtj1ow2i" path="res://assets/textures/wires.png" id="1_qg2ku"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qg2ku"]
+atlas = ExtResource("1_qg2ku")
+region = Rect2(42, 0, 6, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ts27d"]
+atlas = ExtResource("1_qg2ku")
+region = Rect2(48, 0, 6, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rx2re"]
+atlas = ExtResource("1_qg2ku")
+region = Rect2(36, 0, 6, 16)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qg2ku")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ts27d")
+}],
+"loop": 0,
+"name": &"cut",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rx2re")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 5.0
+}]
