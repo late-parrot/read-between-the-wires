@@ -68,10 +68,10 @@ func get_puzzle(main):
 	return puzzles[puzzle-1]
 
 func completed(main) -> void:
+	defused += 1
 	var p = get_puzzle(main)
 	if not ended:
 		main.start_puzzle(p)
-	defused += 1
 
 func failed(main) -> void:
 	var p = get_puzzle(main)
