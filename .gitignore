@@ -14,6 +14,4 @@ export_presets.cfg
 data_*/
 mono_crash.*.json
 
-export/*.zip
-export/*.exe
-export/*.x86_64
+export/
