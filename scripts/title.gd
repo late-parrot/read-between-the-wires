@@ -1,6 +1,13 @@
 extends Control
 
 
+func _ready() -> void:
+	if Game.fade_title:
+		%FadeOut.play("fade_in")
+	else:
+		%FadeOut.play("RESET")
+		Game.fade_title = true
+
 func _process(_delta: float) -> void:
 	%Parallax2D.autoscroll = Vector2.ZERO if Game.simple_background else Vector2(2,2)
 	if Game.simple_background:

@@ -10,10 +10,12 @@
 [ext_resource type="FontFile" uid="uid://wjachmuv6mek" path="res://assets/3x5segmentnumber.ttf" id="5_tbgi4"]
 [ext_resource type="AudioStream" uid="uid://bvgl3ag13gs80" path="res://assets/sfx/explosion.wav" id="6_tefeu"]
 [ext_resource type="Script" uid="uid://dgy1rg3xvvnmf" path="res://scripts/text_edit.gd" id="7_tipki"]
+[ext_resource type="Script" uid="uid://ie0iae6q1xg2" path="res://scripts/rule.gd" id="9_jkv2x"]
 [ext_resource type="Script" uid="uid://kqyvp6y81yyw" path="res://scripts/drop.gd" id="10_a8y0u"]
 [ext_resource type="Script" uid="uid://djeka0jpvada4" path="res://scripts/drag.gd" id="11_jkv2x"]
 [ext_resource type="AudioStream" uid="uid://bso22cjdc2if5" path="res://assets/sfx/defuse.wav" id="11_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://d0bpht60otde2" path="res://scenes/settings.tscn" id="12_eb6dy"]
+[ext_resource type="Texture2D" uid="uid://bv7hcl1q7qvvu" path="res://assets/textures/settings.png" id="13_jbj1t"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ya4ey"]
 font_size = 6
@@ -31,29 +33,22 @@ font = ExtResource("5_tbgi4")
 [sub_resource type="LabelSettings" id="LabelSettings_tbgi4"]
 font_size = 6
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a8y0u"]
+content_margin_left = 1.0
+content_margin_top = 1.0
+content_margin_right = 1.0
+content_margin_bottom = 1.0
+bg_color = Color(0.27058825, 0.26666668, 0.30980393, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_jbj1t"]
+font_size = 6
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tekt2"]
 content_margin_left = 2.0
 content_margin_top = 2.0
 content_margin_right = 2.0
 content_margin_bottom = 2.0
 bg_color = Color(0.27058825, 0.26666668, 0.30980393, 1)
-
-[sub_resource type="InputEventKey" id="InputEventKey_choun"]
-device = -1
-keycode = 4194319
-
-[sub_resource type="Shortcut" id="Shortcut_choun"]
-events = [SubResource("InputEventKey_choun")]
-
-[sub_resource type="LabelSettings" id="LabelSettings_ccjeu"]
-font_size = 3
-
-[sub_resource type="InputEventKey" id="InputEventKey_ya4ey"]
-device = -1
-keycode = 4194321
-
-[sub_resource type="Shortcut" id="Shortcut_eb6dy"]
-events = [SubResource("InputEventKey_ya4ey")]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_choun"]
 draw_center = false
@@ -85,6 +80,27 @@ font_size = 6
 
 [sub_resource type="LabelSettings" id="LabelSettings_choun"]
 font_size = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jbj1t"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.12941177, 0.12941177, 0.13725491, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dp3eg"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.39215687, 0.3882353, 0.39607844, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ld40"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.7058824, 0.32156864, 0.32156864, 1)
 
 [sub_resource type="Animation" id="Animation_choun"]
 length = 0.001
@@ -263,6 +279,18 @@ tracks/3/keys = {
 "update": 0,
 "values": [Vector2(0, 0)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("%SettingsButton:offset_transform_position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_jbj1t"]
 resource_name = "show_credits"
@@ -309,6 +337,18 @@ tracks/3/path = NodePath("%ScoreContainer:offset_transform_position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -20)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("%SettingsButton:offset_transform_position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
@@ -424,29 +464,33 @@ theme_override_constants/margin_bottom = 4
 layout_mode = 2
 theme_override_constants/separation = 2
 
-[node name="Label" type="Label" parent="CreditsContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1618422716]
+[node name="HBoxContainer2" type="HBoxContainer" parent="CreditsContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=495398922]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CreditsContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=127788436]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="Label" type="Label" parent="CreditsContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer2" unique_id=1618422716]
 layout_mode = 2
 size_flags_vertical = 0
 text = "Score"
 label_settings = SubResource("LabelSettings_ya4ey")
 uppercase = true
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="CreditsContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=495398922]
-layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="CreditsContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1897498072]
+[node name="HBoxContainer" type="HBoxContainer" parent="CreditsContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer2" unique_id=1897498072]
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = 2
 
-[node name="Label" type="Label" parent="CreditsContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer" unique_id=1305048429]
+[node name="Label" type="Label" parent="CreditsContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer2/HBoxContainer" unique_id=1305048429]
 layout_mode = 2
 size_flags_vertical = 0
 text = "You defused"
 label_settings = SubResource("LabelSettings_eb6dy")
 uppercase = true
 
-[node name="FinalScore" type="Label" parent="CreditsContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer" unique_id=451453689]
+[node name="FinalScore" type="Label" parent="CreditsContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer2/HBoxContainer" unique_id=451453689]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 0
@@ -454,14 +498,14 @@ text = "5 out of 10"
 label_settings = SubResource("LabelSettings_trceg")
 uppercase = true
 
-[node name="Label2" type="Label" parent="CreditsContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer" unique_id=35985856]
+[node name="Label2" type="Label" parent="CreditsContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer2/HBoxContainer" unique_id=35985856]
 layout_mode = 2
 size_flags_vertical = 0
 text = "bombs in"
 label_settings = SubResource("LabelSettings_eb6dy")
 uppercase = true
 
-[node name="FinalTime" type="Label" parent="CreditsContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer" unique_id=554379456]
+[node name="FinalTime" type="Label" parent="CreditsContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer2/HBoxContainer" unique_id=554379456]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 0
@@ -469,11 +513,22 @@ text = "3 minutes and 42 seconds"
 label_settings = SubResource("LabelSettings_trceg")
 uppercase = true
 
-[node name="Retry" type="Button" parent="CreditsContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1018007026]
+[node name="VBoxContainer" type="VBoxContainer" parent="CreditsContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=174461914]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 1
+
+[node name="Retry" type="Button" parent="CreditsContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer" unique_id=1018007026]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 3
 text = "RETRY"
+
+[node name="BackToTitle" type="Button" parent="CreditsContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer" unique_id=990940313]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 3
+text = "TO TITLE"
 
 [node name="HSeparator" type="HSeparator" parent="CreditsContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1857693937]
 layout_mode = 2
@@ -533,15 +588,17 @@ theme_override_font_sizes/mono_font_size = 3
 bbcode_enabled = true
 text = "HELLO AND WELCOME TO YOUR FIRST DAY!
 
-WE ACCIDENTALLY SET OFF A BUNCH OF BOMBS, SO NOW YOU HAVE A GREAT FIRST TASK.
+WE ACCIDENTALLY SET OFF A BUNCH OF [color=b45252]BOMBS[/color], SO NOW YOU HAVE A GREAT FIRST TASK.
 
 DON'T WORRY, THEY ALL COME WITH [color=b45252]DETAILED INSTRUCTIONS[/color]. 
 
 UNFORTUNATELY, AN INTERN MESSED THEM UP, SO THEY ALL HAVE EXACTLY [color=b45252]ONE INVALID RULE[/color]. AFTER YOU ELIMINATE THIS RULE, THERE SHOULD ONLY BE [color=b45252]ONE SOLUTION[/color]--IF THERE'S MORE THAN ONE, YOU PROBABLY ELIMINATED THE WRONG RULE.
 
-[color=b45252]CLICK[/color] OR USE THE [color=b45252]NUMBER KEYS[/color] TO CUT THE WIRES, [color=b45252]CLICK THE ARROWS[/color] ON THE LEFT OR USE THE [color=b45252]ARROW KEYS[/color] TO LOOK THROUGH ALL THE RULES, AND USE [color=b45252]TAB[/color] TO FOCUS OR UNFOCUS THE NOTES.
+[color=b45252]CLICK[/color] OR USE THE [color=b45252]NUMBER KEYS[/color] TO CUT THE WIRES, PRESS [color=b45252]TAB[/color] TO FOCUS OR UNFOCUS THE NOTES, AND TRY NOT TO [color=b45252]DIE[/color].
 
-YOU CAN TYPE IN THE NOTES OR DRAG AROUND THE NUMBERS TO THE RIGHT TO ORGANIZE YOUR THOUGHTS.
+YOU CAN TYPE IN THE NOTES OR DRAG AROUND THE NUMBERS TO THE RIGHT TO [color=b45252]ORGANIZE YOUR THOUGHTS[/color].
+
+YOU CAN ALSO CLICK ON ONE OF THE RULES TO MARK IF YOU THINK IT'S [color=b45252]WRONG[/color].
 
 GOOD LUCK!"
 
@@ -671,6 +728,7 @@ layout_mode = 2
 theme_override_constants/separation = 2
 
 [node name="Label" type="Label" parent="RulesContainer/MarginContainer/VBoxContainer" unique_id=305647158]
+visible = false
 layout_mode = 2
 text = "Rules"
 label_settings = SubResource("LabelSettings_tbgi4")
@@ -680,56 +738,124 @@ uppercase = true
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_constants/line_separation = -1
 theme_override_font_sizes/normal_font_size = 3
 theme_override_font_sizes/bold_font_size = 6
 theme_override_font_sizes/bold_italics_font_size = 6
 theme_override_font_sizes/italics_font_size = 6
 theme_override_font_sizes/mono_font_size = 6
-theme_override_styles/normal = SubResource("StyleBoxFlat_tekt2")
+theme_override_styles/normal = SubResource("StyleBoxFlat_a8y0u")
+bbcode_enabled = true
 fit_content = true
+script = ExtResource("9_jkv2x")
+
+[node name="Wrong" type="ColorRect" parent="RulesContainer/MarginContainer/VBoxContainer/Rule1" unique_id=424241304]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 22.0
+offset_right = 46.0
+offset_bottom = 2.0
+rotation = 1.5707964
+color = Color(0.7058824, 0.32156864, 0.32156864, 1)
 
 [node name="Rule2" type="RichTextLabel" parent="RulesContainer/MarginContainer/VBoxContainer" unique_id=1362432689]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_constants/line_separation = -1
 theme_override_font_sizes/normal_font_size = 3
 theme_override_font_sizes/bold_font_size = 6
 theme_override_font_sizes/bold_italics_font_size = 6
 theme_override_font_sizes/italics_font_size = 6
 theme_override_font_sizes/mono_font_size = 6
-theme_override_styles/normal = SubResource("StyleBoxFlat_tekt2")
+theme_override_styles/normal = SubResource("StyleBoxFlat_a8y0u")
+bbcode_enabled = true
 fit_content = true
+script = ExtResource("9_jkv2x")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="RulesContainer/MarginContainer/VBoxContainer" unique_id=1924124496]
-layout_mode = 2
-size_flags_vertical = 8
-theme_override_constants/separation = 2
+[node name="Wrong" type="ColorRect" parent="RulesContainer/MarginContainer/VBoxContainer/Rule2" unique_id=595582190]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 22.0
+offset_right = 46.0
+offset_bottom = 2.0
+rotation = 1.5707964
+color = Color(0.7058824, 0.32156864, 0.32156864, 1)
 
-[node name="Previous" type="Button" parent="RulesContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1861390686]
+[node name="Rule3" type="RichTextLabel" parent="RulesContainer/MarginContainer/VBoxContainer" unique_id=841150856]
 unique_name_in_owner = true
 layout_mode = 2
-focus_mode = 0
-theme_override_font_sizes/font_size = 3
-shortcut = SubResource("Shortcut_choun")
-shortcut_in_tooltip = false
-text = "<"
+size_flags_vertical = 3
+theme_override_constants/line_separation = -1
+theme_override_font_sizes/normal_font_size = 3
+theme_override_font_sizes/bold_font_size = 6
+theme_override_font_sizes/bold_italics_font_size = 6
+theme_override_font_sizes/italics_font_size = 6
+theme_override_font_sizes/mono_font_size = 6
+theme_override_styles/normal = SubResource("StyleBoxFlat_a8y0u")
+bbcode_enabled = true
+fit_content = true
+script = ExtResource("9_jkv2x")
 
-[node name="PageNumber" type="Label" parent="RulesContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=256989652]
+[node name="Wrong" type="ColorRect" parent="RulesContainer/MarginContainer/VBoxContainer/Rule3" unique_id=385252030]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 22.0
+offset_right = 46.0
+offset_bottom = 2.0
+rotation = 1.5707964
+color = Color(0.7058824, 0.32156864, 0.32156864, 1)
+
+[node name="Rule4" type="RichTextLabel" parent="RulesContainer/MarginContainer/VBoxContainer" unique_id=1583057376]
 unique_name_in_owner = true
 layout_mode = 2
-text = "1/1"
-label_settings = SubResource("LabelSettings_ccjeu")
+size_flags_vertical = 3
+theme_override_constants/line_separation = -1
+theme_override_font_sizes/normal_font_size = 3
+theme_override_font_sizes/bold_font_size = 6
+theme_override_font_sizes/bold_italics_font_size = 6
+theme_override_font_sizes/italics_font_size = 6
+theme_override_font_sizes/mono_font_size = 6
+theme_override_styles/normal = SubResource("StyleBoxFlat_a8y0u")
+bbcode_enabled = true
+fit_content = true
+script = ExtResource("9_jkv2x")
 
-[node name="Next" type="Button" parent="RulesContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=173757442]
+[node name="Wrong" type="ColorRect" parent="RulesContainer/MarginContainer/VBoxContainer/Rule4" unique_id=1643871945]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 22.0
+offset_right = 46.0
+offset_bottom = 2.0
+rotation = 1.5707964
+color = Color(0.7058824, 0.32156864, 0.32156864, 1)
+
+[node name="Rule5" type="RichTextLabel" parent="RulesContainer/MarginContainer/VBoxContainer" unique_id=831677488]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
-focus_mode = 0
-theme_override_font_sizes/font_size = 3
-shortcut = SubResource("Shortcut_eb6dy")
-shortcut_in_tooltip = false
-text = ">"
+size_flags_vertical = 3
+theme_override_constants/line_separation = -1
+theme_override_font_sizes/normal_font_size = 3
+theme_override_font_sizes/bold_font_size = 6
+theme_override_font_sizes/bold_italics_font_size = 6
+theme_override_font_sizes/italics_font_size = 6
+theme_override_font_sizes/mono_font_size = 6
+theme_override_styles/normal = SubResource("StyleBoxFlat_a8y0u")
+bbcode_enabled = true
+fit_content = true
+script = ExtResource("9_jkv2x")
 
-[node name="NotesContainer" type="PanelContainer" parent="." unique_id=1331629270]
+[node name="Wrong" type="ColorRect" parent="RulesContainer/MarginContainer/VBoxContainer/Rule5" unique_id=1202716554]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 22.0
+offset_right = 46.0
+offset_bottom = 2.0
+rotation = 1.5707964
+color = Color(0.7058824, 0.32156864, 0.32156864, 1)
+
+[node name="NotesContainer" type="PanelContainer" parent="." unique_id=1593607346]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 11
@@ -742,24 +868,25 @@ grow_vertical = 2
 offset_transform_enabled = true
 offset_transform_visual_only = false
 
-[node name="MarginContainer" type="MarginContainer" parent="NotesContainer" unique_id=1815859893]
+[node name="MarginContainer" type="MarginContainer" parent="NotesContainer" unique_id=441350915]
 layout_mode = 2
 theme_override_constants/margin_left = 2
 theme_override_constants/margin_top = 2
 theme_override_constants/margin_right = 2
 theme_override_constants/margin_bottom = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="NotesContainer/MarginContainer" unique_id=1535512121]
+[node name="VBoxContainer" type="VBoxContainer" parent="NotesContainer/MarginContainer" unique_id=337875413]
 layout_mode = 2
 theme_override_constants/separation = 2
 
-[node name="Label" type="Label" parent="NotesContainer/MarginContainer/VBoxContainer" unique_id=376949113]
+[node name="Label" type="Label" parent="NotesContainer/MarginContainer/VBoxContainer" unique_id=1440094637]
+visible = false
 layout_mode = 2
 text = "Notes"
-label_settings = SubResource("LabelSettings_tbgi4")
+label_settings = SubResource("LabelSettings_jbj1t")
 uppercase = true
 
-[node name="Notes" type="TextEdit" parent="NotesContainer/MarginContainer/VBoxContainer" unique_id=1061418622]
+[node name="Notes" type="TextEdit" parent="NotesContainer/MarginContainer/VBoxContainer" unique_id=1121974695]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
@@ -780,109 +907,109 @@ script = ExtResource("7_tipki")
 uppercase = true
 focus_shortcut = SubResource("Shortcut_trceg")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="NotesContainer/MarginContainer/VBoxContainer" unique_id=1672890888]
+[node name="VBoxContainer" type="VBoxContainer" parent="NotesContainer/MarginContainer/VBoxContainer" unique_id=620920763]
 layout_mode = 2
 theme_override_constants/separation = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1881282929]
+[node name="MarginContainer" type="MarginContainer" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1152437717]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_left = 3
 theme_override_constants/margin_right = 3
 
-[node name="GridContainer" type="GridContainer" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer" unique_id=869885769]
+[node name="GridContainer" type="GridContainer" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer" unique_id=262087664]
 layout_mode = 2
 theme_override_constants/h_separation = 1
 theme_override_constants/v_separation = 1
 columns = 3
 
-[node name="Slot0" type="CenterContainer" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/GridContainer" unique_id=1318900296]
+[node name="Slot0" type="CenterContainer" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/GridContainer" unique_id=1605684148]
 layout_mode = 2
 mouse_filter = 0
 
-[node name="ColorRect" type="ColorRect" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/GridContainer/Slot0" unique_id=584594075 node_paths=PackedStringArray("container")]
+[node name="ColorRect" type="ColorRect" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/GridContainer/Slot0" unique_id=1883283649 node_paths=PackedStringArray("container")]
 custom_minimum_size = Vector2(4, 6)
 layout_mode = 2
 color = Color(0.27058825, 0.26666668, 0.30980393, 1)
 script = ExtResource("10_a8y0u")
 container = NodePath("..")
 
-[node name="Slot1" type="CenterContainer" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/GridContainer" unique_id=1208772631]
+[node name="Slot1" type="CenterContainer" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/GridContainer" unique_id=2068160375]
 layout_mode = 2
 mouse_filter = 0
 
-[node name="ColorRect" type="ColorRect" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/GridContainer/Slot1" unique_id=1865991025 node_paths=PackedStringArray("container")]
+[node name="ColorRect" type="ColorRect" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/GridContainer/Slot1" unique_id=1217476639 node_paths=PackedStringArray("container")]
 custom_minimum_size = Vector2(4, 6)
 layout_mode = 2
 color = Color(0.27058825, 0.26666668, 0.30980393, 1)
 script = ExtResource("10_a8y0u")
 container = NodePath("..")
 
-[node name="Slot2" type="CenterContainer" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/GridContainer" unique_id=1445155420]
+[node name="Slot2" type="CenterContainer" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/GridContainer" unique_id=1212696443]
 layout_mode = 2
 mouse_filter = 0
 
-[node name="ColorRect" type="ColorRect" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/GridContainer/Slot2" unique_id=1285727566 node_paths=PackedStringArray("container")]
+[node name="ColorRect" type="ColorRect" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/GridContainer/Slot2" unique_id=1032943988 node_paths=PackedStringArray("container")]
 custom_minimum_size = Vector2(4, 6)
 layout_mode = 2
 color = Color(0.27058825, 0.26666668, 0.30980393, 1)
 script = ExtResource("10_a8y0u")
 container = NodePath("..")
 
-[node name="Slot3" type="CenterContainer" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/GridContainer" unique_id=257221752]
+[node name="Slot3" type="CenterContainer" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/GridContainer" unique_id=920357871]
 layout_mode = 2
 mouse_filter = 0
 
-[node name="ColorRect" type="ColorRect" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/GridContainer/Slot3" unique_id=1463072491 node_paths=PackedStringArray("container")]
+[node name="ColorRect" type="ColorRect" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/GridContainer/Slot3" unique_id=1605810471 node_paths=PackedStringArray("container")]
 custom_minimum_size = Vector2(4, 6)
 layout_mode = 2
 color = Color(0.27058825, 0.26666668, 0.30980393, 1)
 script = ExtResource("10_a8y0u")
 container = NodePath("..")
 
-[node name="Slot4" type="CenterContainer" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/GridContainer" unique_id=866021788]
+[node name="Slot4" type="CenterContainer" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/GridContainer" unique_id=539574419]
 layout_mode = 2
 mouse_filter = 0
 
-[node name="ColorRect" type="ColorRect" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/GridContainer/Slot4" unique_id=356232817 node_paths=PackedStringArray("container")]
+[node name="ColorRect" type="ColorRect" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/GridContainer/Slot4" unique_id=561889591 node_paths=PackedStringArray("container")]
 custom_minimum_size = Vector2(4, 6)
 layout_mode = 2
 color = Color(0.27058825, 0.26666668, 0.30980393, 1)
 script = ExtResource("10_a8y0u")
 container = NodePath("..")
 
-[node name="Slot5" type="CenterContainer" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/GridContainer" unique_id=1178523904]
+[node name="Slot5" type="CenterContainer" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/GridContainer" unique_id=1412053043]
 layout_mode = 2
 mouse_filter = 0
 
-[node name="ColorRect" type="ColorRect" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/GridContainer/Slot5" unique_id=1062603981 node_paths=PackedStringArray("container")]
+[node name="ColorRect" type="ColorRect" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/GridContainer/Slot5" unique_id=926968324 node_paths=PackedStringArray("container")]
 custom_minimum_size = Vector2(4, 6)
 layout_mode = 2
 color = Color(0.27058825, 0.26666668, 0.30980393, 1)
 script = ExtResource("10_a8y0u")
 container = NodePath("..")
 
-[node name="MarginContainer2" type="MarginContainer" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=236648411]
+[node name="MarginContainer2" type="MarginContainer" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=164974829]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_left = 1
 theme_override_constants/margin_right = 1
 
-[node name="ColorRect" type="ColorRect" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2" unique_id=1474260037 node_paths=PackedStringArray("container")]
+[node name="ColorRect" type="ColorRect" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2" unique_id=324604222 node_paths=PackedStringArray("container")]
 layout_mode = 2
 color = Color(0.27058825, 0.26666668, 0.30980393, 1)
 script = ExtResource("10_a8y0u")
 max_children = 7
 container = NodePath("../MarginContainer/NumberContainer")
 
-[node name="MarginContainer" type="MarginContainer" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2" unique_id=830515641]
+[node name="MarginContainer" type="MarginContainer" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2" unique_id=1879283193]
 layout_mode = 2
 theme_override_constants/margin_left = 2
 theme_override_constants/margin_top = 2
 theme_override_constants/margin_right = 2
 theme_override_constants/margin_bottom = 2
 
-[node name="NumberContainer" type="GridContainer" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2/MarginContainer" unique_id=111588058 node_paths=PackedStringArray("container")]
+[node name="NumberContainer" type="GridContainer" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2/MarginContainer" unique_id=434433342 node_paths=PackedStringArray("container")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 13)
 layout_mode = 2
@@ -895,19 +1022,19 @@ max_children = 6
 container = NodePath(".")
 sorted = true
 
-[node name="Number1" type="PanelContainer" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2/MarginContainer/NumberContainer" unique_id=1375874889]
+[node name="Number1" type="PanelContainer" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2/MarginContainer/NumberContainer" unique_id=1203296206]
 unique_name_in_owner = true
 layout_mode = 2
 offset_transform_enabled = true
 theme_override_styles/panel = SubResource("StyleBoxFlat_ccjeu")
 script = ExtResource("11_jkv2x")
 
-[node name="CenterContainer" type="CenterContainer" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2/MarginContainer/NumberContainer/Number1" unique_id=617716581]
+[node name="CenterContainer" type="CenterContainer" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2/MarginContainer/NumberContainer/Number1" unique_id=104818959]
 custom_minimum_size = Vector2(2, 4)
 custom_maximum_size = Vector2(2, 4)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2/MarginContainer/NumberContainer/Number1/CenterContainer" unique_id=705032191]
+[node name="Label" type="Label" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2/MarginContainer/NumberContainer/Number1/CenterContainer" unique_id=1087603129]
 custom_maximum_size = Vector2(1.5, 3.5)
 layout_mode = 2
 offset_transform_enabled = true
@@ -915,7 +1042,7 @@ offset_transform_position = Vector2(0.25, 0.25)
 text = "1"
 label_settings = SubResource("LabelSettings_6nmne")
 
-[node name="Number2" type="PanelContainer" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2/MarginContainer/NumberContainer" unique_id=642231190]
+[node name="Number2" type="PanelContainer" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2/MarginContainer/NumberContainer" unique_id=933296035]
 unique_name_in_owner = true
 layout_mode = 2
 offset_transform_enabled = true
@@ -923,12 +1050,12 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_ccjeu")
 script = ExtResource("11_jkv2x")
 index = 1
 
-[node name="CenterContainer" type="CenterContainer" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2/MarginContainer/NumberContainer/Number2" unique_id=802784066]
+[node name="CenterContainer" type="CenterContainer" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2/MarginContainer/NumberContainer/Number2" unique_id=1173820933]
 custom_minimum_size = Vector2(2, 4)
 custom_maximum_size = Vector2(2, 4)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2/MarginContainer/NumberContainer/Number2/CenterContainer" unique_id=918864071]
+[node name="Label" type="Label" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2/MarginContainer/NumberContainer/Number2/CenterContainer" unique_id=762144305]
 custom_maximum_size = Vector2(1.5, 3.5)
 layout_mode = 2
 offset_transform_enabled = true
@@ -936,7 +1063,7 @@ offset_transform_position = Vector2(0.25, 0.25)
 text = "2"
 label_settings = SubResource("LabelSettings_6nmne")
 
-[node name="Number3" type="PanelContainer" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2/MarginContainer/NumberContainer" unique_id=459214136]
+[node name="Number3" type="PanelContainer" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2/MarginContainer/NumberContainer" unique_id=1820442436]
 unique_name_in_owner = true
 layout_mode = 2
 offset_transform_enabled = true
@@ -944,12 +1071,12 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_ccjeu")
 script = ExtResource("11_jkv2x")
 index = 2
 
-[node name="CenterContainer" type="CenterContainer" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2/MarginContainer/NumberContainer/Number3" unique_id=1018965944]
+[node name="CenterContainer" type="CenterContainer" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2/MarginContainer/NumberContainer/Number3" unique_id=1851627910]
 custom_minimum_size = Vector2(2, 4)
 custom_maximum_size = Vector2(2, 4)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2/MarginContainer/NumberContainer/Number3/CenterContainer" unique_id=1025703839]
+[node name="Label" type="Label" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2/MarginContainer/NumberContainer/Number3/CenterContainer" unique_id=957990508]
 custom_maximum_size = Vector2(1.5, 3.5)
 layout_mode = 2
 offset_transform_enabled = true
@@ -957,7 +1084,7 @@ offset_transform_position = Vector2(0.25, 0.25)
 text = "3"
 label_settings = SubResource("LabelSettings_6nmne")
 
-[node name="Number4" type="PanelContainer" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2/MarginContainer/NumberContainer" unique_id=1092116965]
+[node name="Number4" type="PanelContainer" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2/MarginContainer/NumberContainer" unique_id=274785106]
 unique_name_in_owner = true
 layout_mode = 2
 offset_transform_enabled = true
@@ -965,12 +1092,12 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_ccjeu")
 script = ExtResource("11_jkv2x")
 index = 3
 
-[node name="CenterContainer" type="CenterContainer" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2/MarginContainer/NumberContainer/Number4" unique_id=1253841119]
+[node name="CenterContainer" type="CenterContainer" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2/MarginContainer/NumberContainer/Number4" unique_id=769330790]
 custom_minimum_size = Vector2(2, 4)
 custom_maximum_size = Vector2(2, 4)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2/MarginContainer/NumberContainer/Number4/CenterContainer" unique_id=1927561804]
+[node name="Label" type="Label" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2/MarginContainer/NumberContainer/Number4/CenterContainer" unique_id=774713794]
 custom_maximum_size = Vector2(1.5, 3.5)
 layout_mode = 2
 offset_transform_enabled = true
@@ -978,7 +1105,7 @@ offset_transform_position = Vector2(0.25, 0.25)
 text = "4"
 label_settings = SubResource("LabelSettings_6nmne")
 
-[node name="Number5" type="PanelContainer" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2/MarginContainer/NumberContainer" unique_id=1539079579]
+[node name="Number5" type="PanelContainer" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2/MarginContainer/NumberContainer" unique_id=632493632]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
@@ -987,12 +1114,12 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_ccjeu")
 script = ExtResource("11_jkv2x")
 index = 4
 
-[node name="CenterContainer" type="CenterContainer" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2/MarginContainer/NumberContainer/Number5" unique_id=1208797671]
+[node name="CenterContainer" type="CenterContainer" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2/MarginContainer/NumberContainer/Number5" unique_id=272693727]
 custom_minimum_size = Vector2(2, 4)
 custom_maximum_size = Vector2(2, 4)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2/MarginContainer/NumberContainer/Number5/CenterContainer" unique_id=243394655]
+[node name="Label" type="Label" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2/MarginContainer/NumberContainer/Number5/CenterContainer" unique_id=458979483]
 custom_maximum_size = Vector2(1.5, 3.5)
 layout_mode = 2
 offset_transform_enabled = true
@@ -1000,7 +1127,7 @@ offset_transform_position = Vector2(0.25, 0.25)
 text = "5"
 label_settings = SubResource("LabelSettings_6nmne")
 
-[node name="Number6" type="PanelContainer" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2/MarginContainer/NumberContainer" unique_id=394706544]
+[node name="Number6" type="PanelContainer" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2/MarginContainer/NumberContainer" unique_id=675501388]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
@@ -1009,12 +1136,12 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_ccjeu")
 script = ExtResource("11_jkv2x")
 index = 5
 
-[node name="CenterContainer" type="CenterContainer" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2/MarginContainer/NumberContainer/Number6" unique_id=1344721886]
+[node name="CenterContainer" type="CenterContainer" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2/MarginContainer/NumberContainer/Number6" unique_id=269068199]
 custom_minimum_size = Vector2(2, 4)
 custom_maximum_size = Vector2(2, 4)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2/MarginContainer/NumberContainer/Number6/CenterContainer" unique_id=891580506]
+[node name="Label" type="Label" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2/MarginContainer/NumberContainer/Number6/CenterContainer" unique_id=971508501]
 custom_maximum_size = Vector2(1.5, 3.5)
 layout_mode = 2
 offset_transform_enabled = true
@@ -1055,6 +1182,26 @@ layout_mode = 2
 text = "0/10 in 5:32"
 label_settings = SubResource("LabelSettings_choun")
 uppercase = true
+
+[node name="SettingsButton" type="Button" parent="." unique_id=1814933023]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(6, 6)
+layout_mode = 0
+offset_left = 124.0
+offset_top = 4.0
+offset_right = 132.0
+offset_bottom = 12.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+offset_transform_enabled = true
+theme_override_constants/h_separation = 2
+theme_override_constants/icon_max_width = 4
+theme_override_font_sizes/font_size = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_jbj1t")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_dp3eg")
+theme_override_styles/hover = SubResource("StyleBoxFlat_0ld40")
+icon = ExtResource("13_jbj1t")
+icon_alignment = 1
 
 [node name="Timer" type="Timer" parent="." unique_id=422555531]
 unique_name_in_owner = true
@@ -1112,14 +1259,14 @@ libraries/ = SubResource("AnimationLibrary_0ld40")
 autoplay = &"fade_in"
 
 [node name="Settings" parent="." unique_id=1824899894 instance=ExtResource("12_eb6dy")]
+unique_name_in_owner = true
 visible = false
 layout_mode = 1
 
-[connection signal="pressed" from="CreditsContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Retry" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="CreditsContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/Retry" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="CreditsContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/BackToTitle" to="." method="_on_back_to_title_pressed"]
 [connection signal="meta_clicked" from="CreditsContainer/PanelContainer/MarginContainer/VBoxContainer/RichTextLabel" to="." method="_on_rich_text_label_meta_clicked"]
 [connection signal="pressed" from="TutorialContainer/MarginContainer/VBoxContainer/DoneButton" to="." method="_on_done_button_pressed"]
-[connection signal="pressed" from="RulesContainer/MarginContainer/VBoxContainer/HBoxContainer/Previous" to="." method="_on_previous_pressed"]
-[connection signal="pressed" from="RulesContainer/MarginContainer/VBoxContainer/HBoxContainer/Next" to="." method="_on_next_pressed"]
 [connection signal="caret_changed" from="NotesContainer/MarginContainer/VBoxContainer/Notes" to="NotesContainer/MarginContainer/VBoxContainer/Notes" method="_on_caret_changed"]
 [connection signal="text_changed" from="NotesContainer/MarginContainer/VBoxContainer/Notes" to="NotesContainer/MarginContainer/VBoxContainer/Notes" method="_on_text_changed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

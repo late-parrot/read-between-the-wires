@@ -11,25 +11,14 @@ var solution = []
 var rules = []:
 	set(v):
 		rules = v
-		pages = []
-		for i in range(0, rules.size(), 2):
-			if i + 1 < rules.size():
-				pages.append([rules[i], rules[i + 1]])
+		for i in range(1,6):
+			var n = get_node("%Rule"+str(i))
+			n.wrong = false
+			if len(v) >= i:
+				n.visible = true
+				n.parse_bbcode(rule_to_str(v[i-1]))
 			else:
-				pages.append([rules[i]])
-var pages = []
-var page:
-	set(v):
-		page = v
-		if page < 0: page = pages.size()-1
-		if page >= pages.size(): page = 0
-		%Rule1.text = rule_to_str(pages[page][0]).to_upper()
-		if len(pages[page]) > 1:
-			%Rule2.text = rule_to_str(pages[page][1]).to_upper()
-			%Rule2.visible = true
-		else:
-			%Rule2.visible = false
-		%PageNumber.text = str(page+1)+"/"+str(pages.size())
+				n.visible = false
 
 var next = 0
 var lost = false
@@ -55,6 +44,10 @@ var colors:
 func _ready() -> void:
 	connect("completed", Game.completed)
 	connect("failed", Game.failed)
+	for i in range(1,6):
+		var n = get_node("%Rule"+str(i))
+		n.connect("set_as_wrong", _on_wrong_set)
+	%SettingsButton.connect("pressed", %Settings.toggle)
 	
 func _process(_delta: float) -> void:
 	%Parallax2D.autoscroll = Vector2.ZERO if Game.simple_background else Vector2(2,2)
@@ -81,7 +74,6 @@ func start_puzzle(puzzle) -> void:
 	colors = cs
 	solution = puzzle["solution"]
 	rules = puzzle["rules"]
-	page = 0
 	%Notes.clear()
 	
 	var num_wires = len(solution)
@@ -101,6 +93,11 @@ func delete_wires() -> void:
 		w.queue_free()
 	for l in %NumberLabels.get_children():
 		l.queue_free()
+
+func _on_wrong_set() -> void:
+	for i in range(1,6):
+		var n = get_node("%Rule"+str(i))
+		n.wrong = false
 
 func _on_wire_cut(wire: Wire) -> void:
 	if Game.ended: return
@@ -137,18 +134,16 @@ func lose() -> void:
 
 func rule_to_str(rule) -> String:
 	match rule["type"]:
-		"before": return "Wire "+str(int(rule["first"])+1)+" must be cut before wire "+str(int(rule["second"])+1)
-		"immediate": return "Wire "+str(int(rule["first"])+1)+" must be cut just before wire "+str(int(rule["second"])+1)
-		"before_color": return "Wire "+str(int(rule["number"])+1)+" must be cut before any "+rule["color"]+" wires"
+		"before": return "CUT WIRE [color=888]"+str(int(rule["first"])+1)+"[/color] BEFORE WIRE [color=888]"+str(int(rule["second"])+1)+"[/color]"
+		"immediate": return "CUT WIRE [color=888]"+str(int(rule["first"])+1)+"[/color] JUST BEFORE WIRE [color=888]"+str(int(rule["second"])+1)+"[/color]"
+		"before_color":
+			var color_text = "[color="+{
+				"red": "b45252",
+				"green": "8ab060",
+				"blue": "4b80ca"
+			}[rule["color"]]+"]"+rule["color"].to_upper()+"[/color]"
+			return "CUT WIRE [color=888]"+str(int(rule["number"])+1)+"[/color] BEFORE ANY "+color_text+" WIRES"
 	return "Unknown rule"
-
-func _on_next_pressed() -> void:
-	if not Game.started: return
-	page += 1
-
-func _on_previous_pressed() -> void:
-	if not Game.started: return
-	page -= 1
 
 func end():
 	%BombContainer.queue_free()
@@ -178,3 +173,8 @@ func _on_retry_pressed() -> void:
 	await %FadeIn.animation_finished
 	Game.reset()
 	get_tree().change_scene_to_file("res://scenes/main.tscn")
+
+func _on_back_to_title_pressed() -> void:
+	%FadeIn.play("fade_out")
+	await %FadeIn.animation_finished
+	get_tree().change_scene_to_file("res://scenes/title.tscn")

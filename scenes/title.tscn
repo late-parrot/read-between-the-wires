@@ -56,6 +56,22 @@ tracks/0/keys = {
 "values": [Color(0, 0, 0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_4rr2b"]
+resource_name = "fade_in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_b3w7a"]
 resource_name = "fade_out"
 length = 0.5
@@ -75,6 +91,7 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4rr2b"]
 _data = {
 &"RESET": SubResource("Animation_pyl7j"),
+&"fade_in": SubResource("Animation_4rr2b"),
 &"fade_out": SubResource("Animation_b3w7a")
 }
 
@@ -191,6 +208,7 @@ color = Color(0, 0, 0, 0)
 [node name="FadeOut" type="AnimationPlayer" parent="ColorRect" unique_id=1532710216]
 unique_name_in_owner = true
 libraries/ = SubResource("AnimationLibrary_4rr2b")
+autoplay = &"fade_in"
 
 [node name="Settings" parent="." unique_id=1824899894 instance=ExtResource("6_4rr2b")]
 visible = false
