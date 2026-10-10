@@ -49,6 +49,16 @@ func _ready() -> void:
 		n.connect("set_as_wrong", _on_wrong_set)
 	%SettingsButton.connect("pressed", %Settings.toggle)
 	
+	if Game.mobile:
+		%Notes.visible = false
+		%SlotContainer.columns = 1
+		for s in %SlotContainer.get_children():
+			s.get_node("ColorRect").custom_minimum_size.x = 14
+		%NumberContainer.columns = 1
+		for n in %NumberContainer.get_children():
+			n.custom_minimum_size.x = 14
+		%DragDropContainer.size_flags_vertical = SIZE_EXPAND_FILL
+	
 func _process(_delta: float) -> void:
 	%Parallax2D.autoscroll = Vector2.ZERO if Game.simple_background else Vector2(2,2)
 	if Game.simple_background:

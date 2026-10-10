@@ -40,9 +40,6 @@ content_margin_right = 1.0
 content_margin_bottom = 1.0
 bg_color = Color(0.27058825, 0.26666668, 0.30980393, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_jbj1t"]
-font_size = 6
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tekt2"]
 content_margin_left = 2.0
 content_margin_top = 2.0
@@ -879,13 +876,6 @@ theme_override_constants/margin_bottom = 2
 layout_mode = 2
 theme_override_constants/separation = 2
 
-[node name="Label" type="Label" parent="NotesContainer/MarginContainer/VBoxContainer" unique_id=1440094637]
-visible = false
-layout_mode = 2
-text = "Notes"
-label_settings = SubResource("LabelSettings_jbj1t")
-uppercase = true
-
 [node name="Notes" type="TextEdit" parent="NotesContainer/MarginContainer/VBoxContainer" unique_id=1121974695]
 unique_name_in_owner = true
 layout_mode = 2
@@ -907,109 +897,116 @@ script = ExtResource("7_tipki")
 uppercase = true
 focus_shortcut = SubResource("Shortcut_trceg")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="NotesContainer/MarginContainer/VBoxContainer" unique_id=620920763]
+[node name="DragDropContainer" type="VBoxContainer" parent="NotesContainer/MarginContainer/VBoxContainer" unique_id=620920763]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1152437717]
+[node name="MarginContainer" type="MarginContainer" parent="NotesContainer/MarginContainer/VBoxContainer/DragDropContainer" unique_id=1152437717]
 layout_mode = 2
-size_flags_vertical = 3
 theme_override_constants/margin_left = 3
 theme_override_constants/margin_right = 3
 
-[node name="GridContainer" type="GridContainer" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer" unique_id=262087664]
+[node name="SlotContainer" type="GridContainer" parent="NotesContainer/MarginContainer/VBoxContainer/DragDropContainer/MarginContainer" unique_id=262087664]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/h_separation = 1
 theme_override_constants/v_separation = 1
 columns = 3
 
-[node name="Slot0" type="CenterContainer" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/GridContainer" unique_id=1605684148]
+[node name="Slot0" type="CenterContainer" parent="NotesContainer/MarginContainer/VBoxContainer/DragDropContainer/MarginContainer/SlotContainer" unique_id=1605684148]
 layout_mode = 2
+size_flags_horizontal = 3
 mouse_filter = 0
 
-[node name="ColorRect" type="ColorRect" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/GridContainer/Slot0" unique_id=1883283649 node_paths=PackedStringArray("container")]
+[node name="ColorRect" type="ColorRect" parent="NotesContainer/MarginContainer/VBoxContainer/DragDropContainer/MarginContainer/SlotContainer/Slot0" unique_id=1883283649 node_paths=PackedStringArray("container")]
 custom_minimum_size = Vector2(4, 6)
 layout_mode = 2
 color = Color(0.27058825, 0.26666668, 0.30980393, 1)
 script = ExtResource("10_a8y0u")
 container = NodePath("..")
 
-[node name="Slot1" type="CenterContainer" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/GridContainer" unique_id=2068160375]
+[node name="Slot1" type="CenterContainer" parent="NotesContainer/MarginContainer/VBoxContainer/DragDropContainer/MarginContainer/SlotContainer" unique_id=2068160375]
 layout_mode = 2
+size_flags_horizontal = 3
 mouse_filter = 0
 
-[node name="ColorRect" type="ColorRect" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/GridContainer/Slot1" unique_id=1217476639 node_paths=PackedStringArray("container")]
+[node name="ColorRect" type="ColorRect" parent="NotesContainer/MarginContainer/VBoxContainer/DragDropContainer/MarginContainer/SlotContainer/Slot1" unique_id=1217476639 node_paths=PackedStringArray("container")]
 custom_minimum_size = Vector2(4, 6)
 layout_mode = 2
 color = Color(0.27058825, 0.26666668, 0.30980393, 1)
 script = ExtResource("10_a8y0u")
 container = NodePath("..")
 
-[node name="Slot2" type="CenterContainer" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/GridContainer" unique_id=1212696443]
+[node name="Slot2" type="CenterContainer" parent="NotesContainer/MarginContainer/VBoxContainer/DragDropContainer/MarginContainer/SlotContainer" unique_id=1212696443]
 layout_mode = 2
+size_flags_horizontal = 3
 mouse_filter = 0
 
-[node name="ColorRect" type="ColorRect" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/GridContainer/Slot2" unique_id=1032943988 node_paths=PackedStringArray("container")]
+[node name="ColorRect" type="ColorRect" parent="NotesContainer/MarginContainer/VBoxContainer/DragDropContainer/MarginContainer/SlotContainer/Slot2" unique_id=1032943988 node_paths=PackedStringArray("container")]
 custom_minimum_size = Vector2(4, 6)
 layout_mode = 2
 color = Color(0.27058825, 0.26666668, 0.30980393, 1)
 script = ExtResource("10_a8y0u")
 container = NodePath("..")
 
-[node name="Slot3" type="CenterContainer" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/GridContainer" unique_id=920357871]
+[node name="Slot3" type="CenterContainer" parent="NotesContainer/MarginContainer/VBoxContainer/DragDropContainer/MarginContainer/SlotContainer" unique_id=920357871]
 layout_mode = 2
+size_flags_horizontal = 3
 mouse_filter = 0
 
-[node name="ColorRect" type="ColorRect" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/GridContainer/Slot3" unique_id=1605810471 node_paths=PackedStringArray("container")]
+[node name="ColorRect" type="ColorRect" parent="NotesContainer/MarginContainer/VBoxContainer/DragDropContainer/MarginContainer/SlotContainer/Slot3" unique_id=1605810471 node_paths=PackedStringArray("container")]
 custom_minimum_size = Vector2(4, 6)
 layout_mode = 2
 color = Color(0.27058825, 0.26666668, 0.30980393, 1)
 script = ExtResource("10_a8y0u")
 container = NodePath("..")
 
-[node name="Slot4" type="CenterContainer" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/GridContainer" unique_id=539574419]
+[node name="Slot4" type="CenterContainer" parent="NotesContainer/MarginContainer/VBoxContainer/DragDropContainer/MarginContainer/SlotContainer" unique_id=539574419]
 layout_mode = 2
+size_flags_horizontal = 3
 mouse_filter = 0
 
-[node name="ColorRect" type="ColorRect" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/GridContainer/Slot4" unique_id=561889591 node_paths=PackedStringArray("container")]
+[node name="ColorRect" type="ColorRect" parent="NotesContainer/MarginContainer/VBoxContainer/DragDropContainer/MarginContainer/SlotContainer/Slot4" unique_id=561889591 node_paths=PackedStringArray("container")]
 custom_minimum_size = Vector2(4, 6)
 layout_mode = 2
 color = Color(0.27058825, 0.26666668, 0.30980393, 1)
 script = ExtResource("10_a8y0u")
 container = NodePath("..")
 
-[node name="Slot5" type="CenterContainer" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/GridContainer" unique_id=1412053043]
+[node name="Slot5" type="CenterContainer" parent="NotesContainer/MarginContainer/VBoxContainer/DragDropContainer/MarginContainer/SlotContainer" unique_id=1412053043]
 layout_mode = 2
+size_flags_horizontal = 3
 mouse_filter = 0
 
-[node name="ColorRect" type="ColorRect" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/GridContainer/Slot5" unique_id=926968324 node_paths=PackedStringArray("container")]
+[node name="ColorRect" type="ColorRect" parent="NotesContainer/MarginContainer/VBoxContainer/DragDropContainer/MarginContainer/SlotContainer/Slot5" unique_id=926968324 node_paths=PackedStringArray("container")]
 custom_minimum_size = Vector2(4, 6)
 layout_mode = 2
 color = Color(0.27058825, 0.26666668, 0.30980393, 1)
 script = ExtResource("10_a8y0u")
 container = NodePath("..")
 
-[node name="MarginContainer2" type="MarginContainer" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=164974829]
+[node name="MarginContainer2" type="MarginContainer" parent="NotesContainer/MarginContainer/VBoxContainer/DragDropContainer" unique_id=164974829]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_left = 1
 theme_override_constants/margin_right = 1
 
-[node name="ColorRect" type="ColorRect" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2" unique_id=324604222 node_paths=PackedStringArray("container")]
+[node name="ColorRect" type="ColorRect" parent="NotesContainer/MarginContainer/VBoxContainer/DragDropContainer/MarginContainer2" unique_id=324604222 node_paths=PackedStringArray("container")]
 layout_mode = 2
 color = Color(0.27058825, 0.26666668, 0.30980393, 1)
 script = ExtResource("10_a8y0u")
 max_children = 7
 container = NodePath("../MarginContainer/NumberContainer")
 
-[node name="MarginContainer" type="MarginContainer" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2" unique_id=1879283193]
+[node name="MarginContainer" type="MarginContainer" parent="NotesContainer/MarginContainer/VBoxContainer/DragDropContainer/MarginContainer2" unique_id=1879283193]
 layout_mode = 2
 theme_override_constants/margin_left = 2
 theme_override_constants/margin_top = 2
 theme_override_constants/margin_right = 2
 theme_override_constants/margin_bottom = 2
 
-[node name="NumberContainer" type="GridContainer" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2/MarginContainer" unique_id=434433342 node_paths=PackedStringArray("container")]
+[node name="NumberContainer" type="GridContainer" parent="NotesContainer/MarginContainer/VBoxContainer/DragDropContainer/MarginContainer2/MarginContainer" unique_id=434433342 node_paths=PackedStringArray("container")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 13)
 layout_mode = 2
@@ -1022,19 +1019,20 @@ max_children = 6
 container = NodePath(".")
 sorted = true
 
-[node name="Number1" type="PanelContainer" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2/MarginContainer/NumberContainer" unique_id=1203296206]
+[node name="Number1" type="PanelContainer" parent="NotesContainer/MarginContainer/VBoxContainer/DragDropContainer/MarginContainer2/MarginContainer/NumberContainer" unique_id=1203296206]
 unique_name_in_owner = true
 layout_mode = 2
 offset_transform_enabled = true
 theme_override_styles/panel = SubResource("StyleBoxFlat_ccjeu")
 script = ExtResource("11_jkv2x")
 
-[node name="CenterContainer" type="CenterContainer" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2/MarginContainer/NumberContainer/Number1" unique_id=104818959]
+[node name="CenterContainer" type="CenterContainer" parent="NotesContainer/MarginContainer/VBoxContainer/DragDropContainer/MarginContainer2/MarginContainer/NumberContainer/Number1" unique_id=104818959]
 custom_minimum_size = Vector2(2, 4)
 custom_maximum_size = Vector2(2, 4)
 layout_mode = 2
+size_flags_horizontal = 4
 
-[node name="Label" type="Label" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2/MarginContainer/NumberContainer/Number1/CenterContainer" unique_id=1087603129]
+[node name="Label" type="Label" parent="NotesContainer/MarginContainer/VBoxContainer/DragDropContainer/MarginContainer2/MarginContainer/NumberContainer/Number1/CenterContainer" unique_id=1087603129]
 custom_maximum_size = Vector2(1.5, 3.5)
 layout_mode = 2
 offset_transform_enabled = true
@@ -1042,7 +1040,7 @@ offset_transform_position = Vector2(0.25, 0.25)
 text = "1"
 label_settings = SubResource("LabelSettings_6nmne")
 
-[node name="Number2" type="PanelContainer" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2/MarginContainer/NumberContainer" unique_id=933296035]
+[node name="Number2" type="PanelContainer" parent="NotesContainer/MarginContainer/VBoxContainer/DragDropContainer/MarginContainer2/MarginContainer/NumberContainer" unique_id=933296035]
 unique_name_in_owner = true
 layout_mode = 2
 offset_transform_enabled = true
@@ -1050,12 +1048,13 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_ccjeu")
 script = ExtResource("11_jkv2x")
 index = 1
 
-[node name="CenterContainer" type="CenterContainer" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2/MarginContainer/NumberContainer/Number2" unique_id=1173820933]
+[node name="CenterContainer" type="CenterContainer" parent="NotesContainer/MarginContainer/VBoxContainer/DragDropContainer/MarginContainer2/MarginContainer/NumberContainer/Number2" unique_id=1173820933]
 custom_minimum_size = Vector2(2, 4)
 custom_maximum_size = Vector2(2, 4)
 layout_mode = 2
+size_flags_horizontal = 4
 
-[node name="Label" type="Label" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2/MarginContainer/NumberContainer/Number2/CenterContainer" unique_id=762144305]
+[node name="Label" type="Label" parent="NotesContainer/MarginContainer/VBoxContainer/DragDropContainer/MarginContainer2/MarginContainer/NumberContainer/Number2/CenterContainer" unique_id=762144305]
 custom_maximum_size = Vector2(1.5, 3.5)
 layout_mode = 2
 offset_transform_enabled = true
@@ -1063,7 +1062,7 @@ offset_transform_position = Vector2(0.25, 0.25)
 text = "2"
 label_settings = SubResource("LabelSettings_6nmne")
 
-[node name="Number3" type="PanelContainer" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2/MarginContainer/NumberContainer" unique_id=1820442436]
+[node name="Number3" type="PanelContainer" parent="NotesContainer/MarginContainer/VBoxContainer/DragDropContainer/MarginContainer2/MarginContainer/NumberContainer" unique_id=1820442436]
 unique_name_in_owner = true
 layout_mode = 2
 offset_transform_enabled = true
@@ -1071,12 +1070,13 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_ccjeu")
 script = ExtResource("11_jkv2x")
 index = 2
 
-[node name="CenterContainer" type="CenterContainer" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2/MarginContainer/NumberContainer/Number3" unique_id=1851627910]
+[node name="CenterContainer" type="CenterContainer" parent="NotesContainer/MarginContainer/VBoxContainer/DragDropContainer/MarginContainer2/MarginContainer/NumberContainer/Number3" unique_id=1851627910]
 custom_minimum_size = Vector2(2, 4)
 custom_maximum_size = Vector2(2, 4)
 layout_mode = 2
+size_flags_horizontal = 4
 
-[node name="Label" type="Label" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2/MarginContainer/NumberContainer/Number3/CenterContainer" unique_id=957990508]
+[node name="Label" type="Label" parent="NotesContainer/MarginContainer/VBoxContainer/DragDropContainer/MarginContainer2/MarginContainer/NumberContainer/Number3/CenterContainer" unique_id=957990508]
 custom_maximum_size = Vector2(1.5, 3.5)
 layout_mode = 2
 offset_transform_enabled = true
@@ -1084,7 +1084,7 @@ offset_transform_position = Vector2(0.25, 0.25)
 text = "3"
 label_settings = SubResource("LabelSettings_6nmne")
 
-[node name="Number4" type="PanelContainer" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2/MarginContainer/NumberContainer" unique_id=274785106]
+[node name="Number4" type="PanelContainer" parent="NotesContainer/MarginContainer/VBoxContainer/DragDropContainer/MarginContainer2/MarginContainer/NumberContainer" unique_id=274785106]
 unique_name_in_owner = true
 layout_mode = 2
 offset_transform_enabled = true
@@ -1092,12 +1092,13 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_ccjeu")
 script = ExtResource("11_jkv2x")
 index = 3
 
-[node name="CenterContainer" type="CenterContainer" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2/MarginContainer/NumberContainer/Number4" unique_id=769330790]
+[node name="CenterContainer" type="CenterContainer" parent="NotesContainer/MarginContainer/VBoxContainer/DragDropContainer/MarginContainer2/MarginContainer/NumberContainer/Number4" unique_id=769330790]
 custom_minimum_size = Vector2(2, 4)
 custom_maximum_size = Vector2(2, 4)
 layout_mode = 2
+size_flags_horizontal = 4
 
-[node name="Label" type="Label" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2/MarginContainer/NumberContainer/Number4/CenterContainer" unique_id=774713794]
+[node name="Label" type="Label" parent="NotesContainer/MarginContainer/VBoxContainer/DragDropContainer/MarginContainer2/MarginContainer/NumberContainer/Number4/CenterContainer" unique_id=774713794]
 custom_maximum_size = Vector2(1.5, 3.5)
 layout_mode = 2
 offset_transform_enabled = true
@@ -1105,7 +1106,7 @@ offset_transform_position = Vector2(0.25, 0.25)
 text = "4"
 label_settings = SubResource("LabelSettings_6nmne")
 
-[node name="Number5" type="PanelContainer" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2/MarginContainer/NumberContainer" unique_id=632493632]
+[node name="Number5" type="PanelContainer" parent="NotesContainer/MarginContainer/VBoxContainer/DragDropContainer/MarginContainer2/MarginContainer/NumberContainer" unique_id=632493632]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
@@ -1114,12 +1115,13 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_ccjeu")
 script = ExtResource("11_jkv2x")
 index = 4
 
-[node name="CenterContainer" type="CenterContainer" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2/MarginContainer/NumberContainer/Number5" unique_id=272693727]
+[node name="CenterContainer" type="CenterContainer" parent="NotesContainer/MarginContainer/VBoxContainer/DragDropContainer/MarginContainer2/MarginContainer/NumberContainer/Number5" unique_id=272693727]
 custom_minimum_size = Vector2(2, 4)
 custom_maximum_size = Vector2(2, 4)
 layout_mode = 2
+size_flags_horizontal = 4
 
-[node name="Label" type="Label" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2/MarginContainer/NumberContainer/Number5/CenterContainer" unique_id=458979483]
+[node name="Label" type="Label" parent="NotesContainer/MarginContainer/VBoxContainer/DragDropContainer/MarginContainer2/MarginContainer/NumberContainer/Number5/CenterContainer" unique_id=458979483]
 custom_maximum_size = Vector2(1.5, 3.5)
 layout_mode = 2
 offset_transform_enabled = true
@@ -1127,7 +1129,7 @@ offset_transform_position = Vector2(0.25, 0.25)
 text = "5"
 label_settings = SubResource("LabelSettings_6nmne")
 
-[node name="Number6" type="PanelContainer" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2/MarginContainer/NumberContainer" unique_id=675501388]
+[node name="Number6" type="PanelContainer" parent="NotesContainer/MarginContainer/VBoxContainer/DragDropContainer/MarginContainer2/MarginContainer/NumberContainer" unique_id=675501388]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
@@ -1136,12 +1138,13 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_ccjeu")
 script = ExtResource("11_jkv2x")
 index = 5
 
-[node name="CenterContainer" type="CenterContainer" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2/MarginContainer/NumberContainer/Number6" unique_id=269068199]
+[node name="CenterContainer" type="CenterContainer" parent="NotesContainer/MarginContainer/VBoxContainer/DragDropContainer/MarginContainer2/MarginContainer/NumberContainer/Number6" unique_id=269068199]
 custom_minimum_size = Vector2(2, 4)
 custom_maximum_size = Vector2(2, 4)
 layout_mode = 2
+size_flags_horizontal = 4
 
-[node name="Label" type="Label" parent="NotesContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2/MarginContainer/NumberContainer/Number6/CenterContainer" unique_id=971508501]
+[node name="Label" type="Label" parent="NotesContainer/MarginContainer/VBoxContainer/DragDropContainer/MarginContainer2/MarginContainer/NumberContainer/Number6/CenterContainer" unique_id=971508501]
 custom_maximum_size = Vector2(1.5, 3.5)
 layout_mode = 2
 offset_transform_enabled = true

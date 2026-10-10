@@ -21,6 +21,8 @@ func _gui_input(event: InputEvent) -> void:
 		if event.position.distance_to(drag_start) >= DRAG_THRESHOLD:
 			maybe_drag = false
 			var copy = duplicate()
+			print(-size/2)
+			copy.offset_transform_position = -size/2
 			copy.tree_exited.connect(make_visible)
 			modulate = Color(0,0,0,0)
 			force_drag(self, copy)

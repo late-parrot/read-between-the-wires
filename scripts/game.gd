@@ -24,6 +24,7 @@ var simple_background = false:
 		simple_background = v
 		save_settings()
 
+var mobile = false
 var fade_title = false
 var all_puzzles = JSON.parse_string(FileAccess.get_file_as_string("res://resources/puzzles.json"))
 var num_puzzles = {4: 5, 5: 5}
@@ -37,6 +38,8 @@ var started = false
 var ended = false
 
 func _ready() -> void:
+	if OS.has_feature("web_android") or OS.has_feature("web_ios"):
+		mobile = true
 	load_settings()
 	var s = []
 	for k in num_puzzles.keys():
