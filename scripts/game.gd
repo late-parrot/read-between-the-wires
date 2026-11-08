@@ -23,6 +23,14 @@ var simple_background = false:
 	set(v):
 		simple_background = v
 		save_settings()
+var fullscreen = false:
+	set(v):
+		DisplayServer.window_set_mode(
+			DisplayServer.WINDOW_MODE_FULLSCREEN if v
+			else DisplayServer.WINDOW_MODE_WINDOWED
+		)
+		fullscreen = v
+		save_settings()
 
 var mobile = false
 var fade_title = false
@@ -74,10 +82,13 @@ func get_puzzle(main):
 func completed(main) -> void:
 	defused += 1
 	var p = get_puzzle(main)
-	if not ended:
+	if not ended and not main.tutorial:
 		main.start_puzzle(p)
 
 func failed(main) -> void:
+	if main.tutorial:
+		main.start_puzzle(main.puzzle)
+		return
 	var p = get_puzzle(main)
 	if not ended:
 		main.start_puzzle(p)
@@ -92,7 +103,8 @@ func save_settings() -> void:
 		"volume": volume,
 		"music_volume": music_volume,
 		"sfx_volume": sfx_volume,
-		"simple_background": simple_background
+		"simple_background": simple_background,
+		"fullscreen": fullscreen
 	})
 	save_file.store_string(json_string)
 
@@ -100,7 +112,13 @@ func load_settings() -> void:
 	if not FileAccess.file_exists("user://settings.json"):
 		return
 	var json = JSON.parse_string(FileAccess.get_file_as_string("user://settings.json"))
-	volume = json["volume"]
-	music_volume = json["music_volume"]
-	sfx_volume = json["sfx_volume"]
-	simple_background = json["simple_background"]
+	if json.has("volume"):
+		volume = json["volume"]
+	if json.has("music_volume"):
+		music_volume = json["music_volume"]
+	if json.has("sfx_volume"):
+		sfx_volume = json["sfx_volume"]
+	if json.has("simple_background"):
+		simple_background = json["simple_background"]
+	if json.has("fullscreen"):
+		fullscreen = json["fullscreen"]

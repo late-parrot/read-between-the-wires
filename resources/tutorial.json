@@ -1,0 +1,134 @@
+[
+	{"text": "HELLO, MY NAME IS [color=b45252]ISAAC[/color]. IT'S NICE TO MEET YOU."},
+	{"text": "I'M HONESTLY NOT SURE WHY YOU GOT A JOB HERE."},
+	{"text": "THERE'S LIKE A [color=b45252]90% CHANCE[/color] THAT YOU'LL DIE..."},
+	{"text": "[color=b45252]DEFUSING BOMBS[/color] IS VERY DANGEROUS WORK."},
+	{"text": "ANYWAY, HERE YOU ARE, AND I'M [color=b45252]TEACHING YOU[/color]."},
+	{"text": "WHEN YOU SEE A BOMB, CLICK THE WIRES TO CUT 'EM."},
+	{"text": "TO ORGANIZE YOUR THOUGHTS, YOU CAN..."},
+	{"text": "DRAG THOSE NUMBERS AROUND TO THE RIGHT...", "mobile": false},
+	{"text": "OR TYPE IN THE NOTES.", "mobile": false},
+	{"text": "DRAG THOSE NUMBERS AROUND TO THE RIGHT.", "mobile": true},
+	{"text": "GO AHEAD AND TRY IT OUT."},
+	{"text": "WE GET [color=b45252]A WHOLE BUNCH[/color] OF BOMBS HERE EVERY DAY."},
+	{"text": "EACH [color=b45252]SHOULD[/color] HAVE INSTRUCTIONS LIKE THESE ONES.",
+		"defuse": {
+			"rules": [
+				{
+					"type": "before",
+					"first": 2,
+					"second": 0
+				},
+				{
+					"type": "before",
+					"first": 1,
+					"second": 3
+				},
+				{
+					"type": "immediate",
+					"first": 1,
+					"second": 0
+				}
+			],
+			"colors": [
+				"green",
+				"green",
+				"blue",
+	            "green"
+			],
+			"solution": [
+				2,
+				1,
+				0,
+				3
+			],
+			"hint": "CUTTING A WIRE \"JUST BEFORE\" ANOTHER ONE MEANS THAT IT MUST COME DIRECTLY BEFORE IT IN THE SEQUENCE."
+		},
+	},
+	{"text": "THESE ARE PRETTY STRAIGHTFORWARD."},
+	{"text": "HOWEVER, OUR INTERN [color=b45252]MESSED UP[/color] THE OTHER ONES."},
+	{"text": "EACH OF THEM HAS [color=b45252]EXACTLY ONE[/color] RULE WHICH IS WRONG."},
+	{"text": "AFTER YOU TAKE IT OUT, THERE'S [color=b45252]ONE SOLUTION[/color]."},
+	{"text": "IF THERE'S MORE THAN ONE, YOU'RE PROBABLY WRONG."},
+	{"text": "REMEMBER, ONLY ONE RULE IS WRONG."},
+	{"text": "THIS OFTEN LEADS TO SOME KIND OF [color=b45252]CONTRADICTION[/color]."},
+	{"text": "TRY THIS ONE OUT.",
+		"defuse": {
+			"rules": [
+				{
+					"type": "immediate",
+					"first": 2,
+					"second": 1
+				},
+				{
+					"type": "immediate",
+					"first": 0,
+					"second": 1
+				},
+				{
+					"type": "before",
+					"first": 2,
+					"second": 3
+				},
+				{
+					"type": "before_color",
+					"number": 1,
+					"color": "green"
+				}
+			],
+			"colors": [
+				"red",
+				"red",
+				"green",
+	            "red"
+			],
+			"solution": [
+				0,
+				1,
+				2,
+				3
+			],
+			"hint": "THE FIRST TWO RULES CONTRADICT EACH OTHER, SO ONE OF THEM MUST BE WRONG. THEREFORE, BOTH OF THE OTHER RULES ARE DEFINITELY TRUE."
+		}
+	},
+	{"text": "NOW SEE IF YOU CAN GET THIS ONE.",
+		"defuse": {
+			"rules": [
+				{
+					"type": "immediate",
+					"first": 0,
+					"second": 1
+				},
+				{
+					"type": "immediate",
+					"first": 0,
+					"second": 2
+				},
+				{
+					"type": "before_color",
+					"number": 3,
+					"color": "green"
+				},
+				{
+					"type": "immediate",
+					"first": 2,
+					"second": 0
+				}
+			],
+			"colors": [
+				"red",
+				"red",
+				"green",
+	            "red"
+			],
+			"solution": [
+				3,
+				2,
+				0,
+				1
+			]
+		}
+	},
+	{"text": "I THINK YOU'RE READY FOR THE REAL DEAL."},
+	{"text": "GOOD LUCK AND FAREWELL."},
+]

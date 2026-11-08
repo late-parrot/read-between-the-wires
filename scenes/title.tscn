@@ -165,13 +165,27 @@ layout_mode = 2
 size_flags_vertical = 8
 theme_override_constants/separation = 2
 
-[node name="Play" type="Button" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=442412876]
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=2015317856]
 layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="Play" type="Button" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=442412876]
+layout_mode = 2
+size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 6
 theme_override_styles/normal = SubResource("StyleBoxFlat_p6dhs")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_pyl7j")
 theme_override_styles/hover = SubResource("StyleBoxFlat_b3w7a")
 text = "PLAY"
+
+[node name="Tutorial" type="Button" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=180708747]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 6
+theme_override_styles/normal = SubResource("StyleBoxFlat_p6dhs")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pyl7j")
+theme_override_styles/hover = SubResource("StyleBoxFlat_b3w7a")
+text = "TUTORIAL"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1459844221]
 layout_mode = 2
@@ -214,6 +228,7 @@ autoplay = &"fade_in"
 visible = false
 layout_mode = 1
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Tutorial" to="." method="_on_tutorial_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Settings" to="Settings" method="toggle"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Quit" to="." method="_on_quit_pressed"]

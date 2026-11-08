@@ -18,5 +18,10 @@ func _on_play_pressed() -> void:
 	await %FadeOut.animation_finished
 	get_tree().change_scene_to_file("res://scenes/main.tscn")
 
+func _on_tutorial_pressed() -> void:
+	%FadeOut.play("fade_out")
+	await %FadeOut.animation_finished
+	get_tree().change_scene_to_file("res://scenes/tutorial.tscn")
+
 func _on_quit_pressed() -> void:
 	get_tree().quit()

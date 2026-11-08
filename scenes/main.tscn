@@ -556,6 +556,7 @@ meta_underlined = false
 
 [node name="TutorialContainer" type="PanelContainer" parent="." unique_id=267594540]
 unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(102, 46)
 layout_mode = 0
 offset_left = 30.0

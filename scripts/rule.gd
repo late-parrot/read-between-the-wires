@@ -22,5 +22,5 @@ func _on_mouse_exited() -> void:
 	$Wrong.modulate = Color.WHITE if wrong else Color.TRANSPARENT
 
 func _gui_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.is_pressed():
+	if event is InputEventMouseButton and event.is_pressed() and (event as InputEventMouseButton).button_index == MOUSE_BUTTON_LEFT:
 		wrong = not wrong

@@ -153,6 +153,21 @@ theme_override_constants/h_separation = 8
 theme_override_constants/v_separation = 2
 columns = 2
 
+[node name="Label4" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer4/VBoxContainer2/MarginContainer/GridContainer" unique_id=1911725873]
+custom_minimum_size = Vector2(34, 0)
+layout_mode = 2
+text = "Fullscreen"
+label_settings = SubResource("LabelSettings_8brup")
+uppercase = true
+
+[node name="Fullscreen" type="CheckButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer4/VBoxContainer2/MarginContainer/GridContainer" unique_id=2133302529]
+unique_name_in_owner = true
+custom_maximum_size = Vector2(-1, 8)
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_r6d6q")
+flat = true
+
 [node name="Label3" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer4/VBoxContainer2/MarginContainer/GridContainer" unique_id=1383904005]
 custom_minimum_size = Vector2(34, 0)
 layout_mode = 2
@@ -179,15 +194,24 @@ focus_mode = 0
 theme_override_font_sizes/font_size = 3
 text = "RESUME (ESC)"
 
+[node name="Title" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=2061269433]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_font_sizes/font_size = 3
+text = "QUIT TO TITLE"
+
 [node name="Quit" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1921148920]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 3
-text = "QUIT"
+text = "QUIT TO DESKTOP"
 
 [connection signal="value_changed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer4/VBoxContainer/MarginContainer/GridContainer/Master" to="." method="_on_master_value_changed"]
 [connection signal="value_changed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer4/VBoxContainer/MarginContainer/GridContainer/Music" to="." method="_on_music_value_changed"]
 [connection signal="value_changed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer4/VBoxContainer/MarginContainer/GridContainer/SFX" to="." method="_on_sfx_value_changed"]
+[connection signal="toggled" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer4/VBoxContainer2/MarginContainer/GridContainer/Fullscreen" to="." method="_on_fullscreen_toggled"]
 [connection signal="toggled" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer4/VBoxContainer2/MarginContainer/GridContainer/SimpleBackground" to="." method="_on_simple_background_toggled"]
 [connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Close" to="." method="_on_close_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Title" to="." method="_on_title_pressed"]
 [connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Quit" to="." method="_on_quit_pressed"]

@@ -6,6 +6,7 @@ func _ready():
 	%Music.value = Game.music_volume
 	%SFX.value = Game.sfx_volume
 	%SimpleBackground.button_pressed = Game.simple_background
+	%Fullscreen.button_pressed = Game.fullscreen
 
 func _process(_delta: float) -> void:
 	%Parallax2D.autoscroll = Vector2.ZERO if Game.simple_background else Vector2(2,2)
@@ -24,6 +25,9 @@ func _on_sfx_value_changed(value: float):
 func _on_simple_background_toggled(toggled_on: bool) -> void:
 	Game.simple_background = toggled_on
 
+func _on_fullscreen_toggled(toggled_on: bool) -> void:
+	Game.fullscreen = toggled_on
+
 func toggle() -> void:
 	visible = not visible
 	mouse_filter = MOUSE_FILTER_STOP if visible else MOUSE_FILTER_IGNORE
@@ -35,6 +39,13 @@ func _on_close_pressed() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("settings"):
 		toggle()
+
+func _on_title_pressed() -> void:
+	toggle()
+	%FadeIn.play("fade_out")
+	await %FadeIn.animation_finished
+	Game.reset()
+	get_tree().change_scene_to_file("res://scenes/title.tscn")
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()

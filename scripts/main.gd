@@ -22,6 +22,7 @@ var rules = []:
 
 var next = 0
 var lost = false
+var tutorial = false
 
 var colors:
 	set(v):
@@ -59,6 +60,10 @@ func _ready() -> void:
 			n.custom_minimum_size.x = 14
 		%DragDropContainer.size_flags_vertical = SIZE_EXPAND_FILL
 	
+	if not tutorial:
+		Game.started = true
+		start_puzzle(Game.get_puzzle(self))
+	
 func _process(_delta: float) -> void:
 	%Parallax2D.autoscroll = Vector2.ZERO if Game.simple_background else Vector2(2,2)
 	if Game.simple_background:
@@ -67,8 +72,9 @@ func _process(_delta: float) -> void:
 	var sec = %Timer.time_left
 	%Minute.text = str(int(sec/60))
 	%Second.text = str(int(sec)%60).lpad(2, "0")
-	%Defused.text = str(Game.defused)+"/"+str(max(Game.puzzle-1, 0))+" in " \
-		+str(int(ceilf(Game.total_time)/60.0))+":"+str(ceili(Game.total_time)%60).lpad(2, "0")
+	if not tutorial:
+		%Defused.text = str(Game.defused)+"/"+str(max(Game.puzzle-1, 0))+" in " \
+			+str(int(ceilf(Game.total_time)/60.0))+":"+str(ceili(Game.total_time)%60).lpad(2, "0")
 
 func start_puzzle(puzzle) -> void:
 	if Game.ended: return
@@ -187,4 +193,5 @@ func _on_retry_pressed() -> void:
 func _on_back_to_title_pressed() -> void:
 	%FadeIn.play("fade_out")
 	await %FadeIn.animation_finished
+	Game.reset()
 	get_tree().change_scene_to_file("res://scenes/title.tscn")
