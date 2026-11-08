@@ -2,6 +2,8 @@ extends Control
 
 
 func _ready():
+	if get_parent() is Title:
+		%Title.visible = false
 	%Master.value = Game.volume
 	%Music.value = Game.music_volume
 	%SFX.value = Game.sfx_volume

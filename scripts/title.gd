@@ -1,4 +1,4 @@
-extends Control
+class_name Title extends Control
 
 
 func _ready() -> void:

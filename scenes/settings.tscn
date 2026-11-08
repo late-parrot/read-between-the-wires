@@ -195,6 +195,7 @@ theme_override_font_sizes/font_size = 3
 text = "RESUME (ESC)"
 
 [node name="Title" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=2061269433]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
