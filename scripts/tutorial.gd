@@ -15,6 +15,7 @@ var step = 0:
 			%Dialogue.visible_characters = 0
 			dialogue_tween = get_tree().create_tween()
 			dialogue_tween.tween_property(%Dialogue, "visible_characters", 60, 2)
+			%HintContainer.visible = false
 			if tutorial_steps[v].has("defuse"):
 				%Next.visible = false
 				%Defuse.visible = true
@@ -22,6 +23,8 @@ var step = 0:
 				if puzzle.has("hint"):
 					%Hint.parse_bbcode(puzzle["hint"])
 					%HintButton.visible = true
+				else:
+					%HintButton.visible = false
 				start_puzzle(puzzle)
 				await completed
 				%Next.visible = true
