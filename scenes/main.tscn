@@ -16,6 +16,8 @@
 [ext_resource type="AudioStream" uid="uid://bso22cjdc2if5" path="res://assets/sfx/defuse.wav" id="11_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://d0bpht60otde2" path="res://scenes/settings.tscn" id="12_eb6dy"]
 [ext_resource type="Texture2D" uid="uid://bv7hcl1q7qvvu" path="res://assets/textures/settings.png" id="13_jbj1t"]
+[ext_resource type="Texture2D" uid="uid://b4tf74sojy0me" path="res://assets/textures/heart.png" id="13_muem4"]
+[ext_resource type="Texture2D" uid="uid://dwlx4kiqr0scf" path="res://assets/textures/heart-empty.png" id="14_dp3eg"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ya4ey"]
 font_size = 6
@@ -495,10 +497,18 @@ text = "5 out of 10"
 label_settings = SubResource("LabelSettings_trceg")
 uppercase = true
 
-[node name="Label2" type="Label" parent="CreditsContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer2/HBoxContainer" unique_id=35985856]
+[node name="Bomb_Bombs" type="Label" parent="CreditsContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer2/HBoxContainer" unique_id=35985856]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 0
-text = "bombs in"
+text = "bombs"
+label_settings = SubResource("LabelSettings_eb6dy")
+uppercase = true
+
+[node name="Label3" type="Label" parent="CreditsContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer2/HBoxContainer" unique_id=1711465238]
+layout_mode = 2
+size_flags_vertical = 0
+text = "in"
 label_settings = SubResource("LabelSettings_eb6dy")
 uppercase = true
 
@@ -1170,20 +1180,180 @@ theme_override_constants/margin_top = 2
 theme_override_constants/margin_right = 2
 theme_override_constants/margin_bottom = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ScoreContainer/MarginContainer" unique_id=1448378299]
+[node name="ClassicScore" type="VBoxContainer" parent="ScoreContainer/MarginContainer" unique_id=1448378299]
+unique_name_in_owner = true
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 1
 
-[node name="Label" type="Label" parent="ScoreContainer/MarginContainer/VBoxContainer" unique_id=623126066]
+[node name="Label" type="Label" parent="ScoreContainer/MarginContainer/ClassicScore" unique_id=623126066]
 layout_mode = 2
 text = "Defused"
 label_settings = SubResource("LabelSettings_8brup")
 uppercase = true
 
-[node name="Defused" type="Label" parent="ScoreContainer/MarginContainer/VBoxContainer" unique_id=167425348]
+[node name="Defused" type="Label" parent="ScoreContainer/MarginContainer/ClassicScore" unique_id=167425348]
 unique_name_in_owner = true
 layout_mode = 2
 text = "0/10 in 5:32"
+label_settings = SubResource("LabelSettings_choun")
+uppercase = true
+
+[node name="EndlessScore" type="VBoxContainer" parent="ScoreContainer/MarginContainer" unique_id=1229885888]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScoreContainer/MarginContainer/EndlessScore" unique_id=1857219799]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="ScoreContainer/MarginContainer/EndlessScore/HBoxContainer" unique_id=600285832]
+visible = false
+layout_mode = 2
+text = "Defused"
+label_settings = SubResource("LabelSettings_8brup")
+uppercase = true
+
+[node name="Heart1" type="MarginContainer" parent="ScoreContainer/MarginContainer/EndlessScore/HBoxContainer" unique_id=1829432149]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="Sprite2D" type="TextureRect" parent="ScoreContainer/MarginContainer/EndlessScore/HBoxContainer/Heart1" unique_id=1824630370]
+custom_minimum_size = Vector2(4, 4)
+custom_maximum_size = Vector2(4, 4)
+layout_mode = 2
+texture = ExtResource("13_muem4")
+expand_mode = 2
+
+[node name="Heart2" type="MarginContainer" parent="ScoreContainer/MarginContainer/EndlessScore/HBoxContainer" unique_id=1955314821]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="Sprite2D" type="TextureRect" parent="ScoreContainer/MarginContainer/EndlessScore/HBoxContainer/Heart2" unique_id=1410711094]
+custom_minimum_size = Vector2(4, 4)
+custom_maximum_size = Vector2(4, 4)
+layout_mode = 2
+texture = ExtResource("13_muem4")
+expand_mode = 2
+
+[node name="Heart3" type="MarginContainer" parent="ScoreContainer/MarginContainer/EndlessScore/HBoxContainer" unique_id=1076478468]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="Sprite2D" type="TextureRect" parent="ScoreContainer/MarginContainer/EndlessScore/HBoxContainer/Heart3" unique_id=1185083606]
+custom_minimum_size = Vector2(4, 4)
+custom_maximum_size = Vector2(4, 4)
+layout_mode = 2
+texture = ExtResource("13_muem4")
+expand_mode = 2
+
+[node name="Heart4" type="MarginContainer" parent="ScoreContainer/MarginContainer/EndlessScore/HBoxContainer" unique_id=758918731]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="Sprite2D" type="TextureRect" parent="ScoreContainer/MarginContainer/EndlessScore/HBoxContainer/Heart4" unique_id=289775385]
+custom_minimum_size = Vector2(4, 4)
+custom_maximum_size = Vector2(4, 4)
+layout_mode = 2
+texture = ExtResource("13_muem4")
+expand_mode = 2
+
+[node name="EmptyHeart1" type="MarginContainer" parent="ScoreContainer/MarginContainer/EndlessScore/HBoxContainer" unique_id=953094930]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="Sprite2D" type="TextureRect" parent="ScoreContainer/MarginContainer/EndlessScore/HBoxContainer/EmptyHeart1" unique_id=1240206158]
+custom_minimum_size = Vector2(4, 4)
+custom_maximum_size = Vector2(4, 4)
+layout_mode = 2
+texture = ExtResource("14_dp3eg")
+expand_mode = 2
+
+[node name="EmptyHeart2" type="MarginContainer" parent="ScoreContainer/MarginContainer/EndlessScore/HBoxContainer" unique_id=364258333]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="Sprite2D" type="TextureRect" parent="ScoreContainer/MarginContainer/EndlessScore/HBoxContainer/EmptyHeart2" unique_id=495077459]
+custom_minimum_size = Vector2(4, 4)
+custom_maximum_size = Vector2(4, 4)
+layout_mode = 2
+texture = ExtResource("14_dp3eg")
+expand_mode = 2
+
+[node name="EmptyHeart3" type="MarginContainer" parent="ScoreContainer/MarginContainer/EndlessScore/HBoxContainer" unique_id=699994129]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="Sprite2D" type="TextureRect" parent="ScoreContainer/MarginContainer/EndlessScore/HBoxContainer/EmptyHeart3" unique_id=1475751295]
+custom_minimum_size = Vector2(4, 4)
+custom_maximum_size = Vector2(4, 4)
+layout_mode = 2
+texture = ExtResource("14_dp3eg")
+expand_mode = 2
+
+[node name="EmptyHeart4" type="MarginContainer" parent="ScoreContainer/MarginContainer/EndlessScore/HBoxContainer" unique_id=336407412]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="Sprite2D" type="TextureRect" parent="ScoreContainer/MarginContainer/EndlessScore/HBoxContainer/EmptyHeart4" unique_id=308272535]
+custom_minimum_size = Vector2(4, 4)
+custom_maximum_size = Vector2(4, 4)
+layout_mode = 2
+texture = ExtResource("14_dp3eg")
+expand_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="ScoreContainer/MarginContainer/EndlessScore" unique_id=1104357298]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="EndlessDefused" type="Label" parent="ScoreContainer/MarginContainer/EndlessScore/HBoxContainer2" unique_id=889851625]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_choun")
+uppercase = true
+
+[node name="EndlessDefused2" type="Label" parent="ScoreContainer/MarginContainer/EndlessScore/HBoxContainer2" unique_id=1948984323]
+unique_name_in_owner = true
+layout_mode = 2
+text = "defused"
 label_settings = SubResource("LabelSettings_choun")
 uppercase = true
 

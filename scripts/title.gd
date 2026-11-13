@@ -16,7 +16,7 @@ func _process(_delta: float) -> void:
 func _on_play_pressed() -> void:
 	%FadeOut.play("fade_out")
 	await %FadeOut.animation_finished
-	get_tree().change_scene_to_file("res://scenes/main.tscn")
+	get_tree().change_scene_to_file("res://scenes/play.tscn")
 
 func _on_tutorial_pressed() -> void:
 	%FadeOut.play("fade_out")

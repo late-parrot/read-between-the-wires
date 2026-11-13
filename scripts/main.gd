@@ -50,6 +50,9 @@ func _ready() -> void:
 		n.connect("set_as_wrong", _on_wrong_set)
 	%SettingsButton.connect("pressed", %Settings.toggle)
 	
+	if Game.hard_mode:
+		%Timer.wait_time = 45
+	
 	if Game.mobile:
 		%Notes.visible = false
 		%SlotContainer.columns = 1
@@ -59,6 +62,10 @@ func _ready() -> void:
 		for n in %NumberContainer.get_children():
 			n.custom_minimum_size.x = 14
 		%DragDropContainer.size_flags_vertical = SIZE_EXPAND_FILL
+	
+	if Game.game_mode == Game.GameMode.ENDLESS:
+		%EndlessScore.visible = true
+		%ClassicScore.visible = false
 	
 	if not tutorial:
 		Game.started = true
@@ -72,7 +79,17 @@ func _process(_delta: float) -> void:
 	var sec = %Timer.time_left
 	%Minute.text = str(int(sec/60))
 	%Second.text = str(int(sec)%60).lpad(2, "0")
-	if not tutorial:
+	if Game.game_mode == Game.GameMode.ENDLESS:
+		%Heart1.visible = Game.hearts >= 1
+		%Heart2.visible = Game.hearts >= 2
+		%Heart3.visible = Game.hearts >= 3
+		%Heart4.visible = Game.hearts >= 4
+		%EmptyHeart1.visible = Game.hearts < 1
+		%EmptyHeart2.visible = Game.hearts < 2
+		%EmptyHeart3.visible = Game.hearts < 3
+		%EmptyHeart4.visible = Game.hearts < 4
+		%EndlessDefused.text = str(Game.defused)
+	elif not tutorial:
 		%Defused.text = str(Game.defused)+"/"+str(max(Game.puzzle-1, 0))+" in " \
 			+str(int(ceilf(Game.total_time)/60.0))+":"+str(ceili(Game.total_time)%60).lpad(2, "0")
 
@@ -163,7 +180,11 @@ func rule_to_str(rule) -> String:
 
 func end():
 	%BombContainer.queue_free()
-	%FinalScore.text = str(Game.defused)+" out of "+str(Game.total_puzzles)
+	if Game.game_mode == Game.GameMode.ENDLESS:
+		%FinalScore.text = str(Game.defused)
+		%Bomb_Bombs.text = "bomb" if Game.defused==1 else "bombs"
+	else:
+		%FinalScore.text = str(Game.defused)+" out of "+str(Game.total_puzzles)
 	var m = int(ceilf(Game.total_time)/60.0)
 	var s = ceili(Game.total_time)%60
 	%FinalTime.text = str(m)+" "+("minute" if m==1 else "minutes")+" and "+str(s)+" "+("second" if s==1 else "seconds")

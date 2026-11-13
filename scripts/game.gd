@@ -32,16 +32,24 @@ var fullscreen = false:
 		fullscreen = v
 		save_settings()
 
+enum GameMode {
+	TUTORIAL, CLASSIC, ENDLESS
+}
+
 var mobile = false
+var game_mode = GameMode.CLASSIC
+var hard_mode = false
 var fade_title = false
 var all_puzzles = JSON.parse_string(FileAccess.get_file_as_string("res://resources/puzzles.json"))
 var num_puzzles = {4: 5, 5: 5}
 var total_puzzles: int:
 	get: return num_puzzles.values().reduce(func(a,b):return a+b)
 var puzzles = []
+var endless_puzzles = []
 var puzzle = 0
 var defused = 0
 var total_time = 0.0
+var hearts = 4
 var started = false
 var ended = false
 
@@ -49,6 +57,9 @@ func _ready() -> void:
 	if OS.has_feature("web_android") or OS.has_feature("web_ios"):
 		mobile = true
 	load_settings()
+	endless_puzzles.append_array(all_puzzles["4"])
+	endless_puzzles.append_array(all_puzzles["5"])
+	endless_puzzles.shuffle()
 	var s = []
 	for k in num_puzzles.keys():
 		for i in range(num_puzzles[k]):
@@ -64,6 +75,7 @@ func reset() -> void:
 	puzzle = 0
 	defused = 0
 	total_time = 0.0
+	hearts = 4
 	started = false
 	ended = false
 	_ready()
@@ -73,6 +85,8 @@ func _process(delta: float) -> void:
 		total_time += delta
 
 func get_puzzle(main):
+	if game_mode == GameMode.ENDLESS:
+		return endless_puzzles.pick_random()
 	if puzzle >= len(puzzles):
 		end(main)
 		return
@@ -89,6 +103,11 @@ func failed(main) -> void:
 	if main.tutorial:
 		main.start_puzzle(main.puzzle)
 		return
+	elif game_mode == GameMode.ENDLESS:
+		hearts -= 1
+		if hearts <= 0:
+			end(main)
+			return
 	var p = get_puzzle(main)
 	if not ended:
 		main.start_puzzle(p)

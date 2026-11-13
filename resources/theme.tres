@@ -3,8 +3,10 @@
 [ext_resource type="Texture2D" uid="uid://f51n6oig3shp" path="res://assets/textures/grabber.png" id="1_7ct1h"]
 [ext_resource type="FontFile" uid="uid://c6lha7j504epa" path="res://assets/my 3x5 tiny mono pixel font.ttf" id="1_d4nwg"]
 [ext_resource type="Texture2D" uid="uid://ci8vk5q51s3xb" path="res://assets/textures/toggle-on.png" id="1_owntx"]
+[ext_resource type="Texture2D" uid="uid://cf1qpca472y44" path="res://assets/textures/check-on.png" id="1_yp2uj"]
 [ext_resource type="Texture2D" uid="uid://cfowm1jhpsqj2" path="res://assets/textures/grabber-highlight.png" id="2_886mr"]
 [ext_resource type="Texture2D" uid="uid://bp41g0uqx5itc" path="res://assets/textures/toggle-off.png" id="2_aaf3v"]
+[ext_resource type="Texture2D" uid="uid://mov325bvevg0" path="res://assets/textures/check-off.png" id="2_dhnw2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tekt2"]
 bg_color = Color(0.7058824, 0.32156864, 0.32156864, 1)
@@ -51,6 +53,8 @@ default_font = ExtResource("1_d4nwg")
 Button/styles/hover = SubResource("StyleBoxFlat_tekt2")
 Button/styles/normal = SubResource("StyleBoxFlat_o6xl0")
 Button/styles/pressed = SubResource("StyleBoxFlat_d4nwg")
+CheckBox/icons/checked = ExtResource("1_yp2uj")
+CheckBox/icons/unchecked = ExtResource("2_dhnw2")
 CheckButton/icons/checked = ExtResource("1_owntx")
 CheckButton/icons/unchecked = ExtResource("2_aaf3v")
 HSeparator/styles/separator = SubResource("StyleBoxLine_d4nwg")

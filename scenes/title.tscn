@@ -179,6 +179,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_b3w7a")
 text = "PLAY"
 
 [node name="Tutorial" type="Button" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=180708747]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 6
